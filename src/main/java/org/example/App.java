@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.beans.Event;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.example.beans.Client;
@@ -12,7 +13,7 @@ public class App {
 
     private EventLogger eventLogger;
 
-    App(Client client, EventLogger eventLogger){
+    public App(Client client, EventLogger eventLogger){
         this.client = client;
         this.eventLogger = eventLogger;
     }
@@ -22,13 +23,17 @@ public class App {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
         App app = (App) ctx.getBean("app");
 
-        app.logEvent("some event for 1");
-        app.logEvent("some event for 2");
+        Event event = ctx.getBean(Event.class);
+        app.logEvent(event, "Some event for 1");
+
+        event = ctx.getBean(Event.class);
+        app.logEvent(event, "Some event for 2");
     }
 
 
-    private void logEvent(String msg) {
+    private void logEvent(Event event, String msg) {
         String message = msg.replaceAll(client.getId(), client.getFullName());
-        eventLogger.logEvent(message);
+        event.setMsg(message);
+        eventLogger.logEvent(event);
     }
 }
