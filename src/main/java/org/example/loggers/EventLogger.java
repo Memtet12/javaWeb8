@@ -1,4 +1,4 @@
-package org.example.beans;
+package org.example.loggers;
 
 public interface EventLogger {
     void logEvent(String msg);

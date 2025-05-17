@@ -1,4 +1,4 @@
-package org.example.beans;
+package org.example.loggers;
 
 public class ConsoleEventLogger implements EventLogger {
     public void logEvent(String msg)
