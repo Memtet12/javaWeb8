@@ -1,12 +1,12 @@
-package org.example;
+package org.example.beans;
 
 
 public class Client {
     String id;
     String fullname;
 
-    public Client(String number, String fullname) {
-        id = number;
+    public Client(String id, String fullname) {
+        this.id = id;
         this.fullname = fullname;
     }
 
@@ -14,7 +14,7 @@ public class Client {
     {
         return id;
     }
-    public String getFullname()
+    public String getFullName()
     {
         return fullname;
     }
@@ -22,7 +22,7 @@ public class Client {
     {
         this.id = id;
     }
-    public void setFullname(String _fullname)
+    public void setFullName(String _fullname)
     {
         fullname = _fullname;
     }
