@@ -7,7 +7,7 @@
 
 
 
-    <bean id="eventLogger" class="org.example.loggers.ConsoleEventLogger" />
+    <bean id="consoleEventLogger" class="org.example.loggers.ConsoleEventLogger" />
 
     <bean id="event" class="org.example.beans.Event" scope="prototype">
         <constructor-arg>
@@ -16,6 +16,14 @@
         <constructor-arg ref="dateFormat"/>
     </bean>
 
+    <bean id="combinedEventLogger" class="org.example.loggers.CombinedEventLogger">
+        <constructor-arg>
+            <list>
+                <ref bean="consoleEventLogger"/>
+                <ref bean="fileEventLogger"/>
+            </list>
+        </constructor-arg>
+    </bean>
 
     <bean id="fileEventLogger" class="org.example.loggers.FileEventLogger"
           init-method="init">

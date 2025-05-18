@@ -2,8 +2,9 @@ package org.example.beans;
 
 
 public class Client {
-    String id;
-    String fullname;
+    private String id;
+    private String fullname;
+    private String greeting;
 
     public Client(String id, String fullname) {
         this.id = id;
@@ -25,5 +26,13 @@ public class Client {
     public void setFullName(String _fullname)
     {
         fullname = _fullname;
+    }
+
+    public String getGreeting() {
+        return greeting;
+    }
+
+    public void setGreeting(String greeting) {
+        this.greeting = greeting;
     }
 }
