@@ -1,7 +1,7 @@
 package org.example;
 
 import org.example.beans.Event;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.example.beans.Client;
 import org.example.loggers.ConsoleEventLogger;
@@ -19,8 +19,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        @SuppressWarnings("resource")
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
         App app = (App) ctx.getBean("app");
 
         Event event = ctx.getBean(Event.class);
@@ -28,6 +27,8 @@ public class App {
 
         event = ctx.getBean(Event.class);
         app.logEvent(event, "Some event for 2");
+
+        ctx.close();
     }
 
 
